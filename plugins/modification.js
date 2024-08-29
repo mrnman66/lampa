@@ -7,7 +7,16 @@
 	    'https://bylampa.github.io/themes.js?v=' + Math.random()
    ], function () {});
 
-   function start_set(){
+   var timer = setInterval(function(){
+        if(typeof Lampa !== 'undefined'){
+            clearInterval(timer);
+
+            if(!Lampa.Storage.get('set','false')) start_set();
+		 
+        }
+    },200);
+
+    function start_set(){
            Lampa.Storage.set('set','true');
            Lampa.Storage.set('keyboard_type', 'integrate');
            Lampa.Storage.set('start_page', 'main');
@@ -20,4 +29,4 @@
 	   Lampa.Storage.set('screensaver', 'false');
            Lampa.Storage.set('pages_save_total', '3');
 	   location.reload()
-    } 
+     } 
