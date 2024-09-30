@@ -1,17 +1,17 @@
-  var updateplugins = false;
+  var updatepluginss = false;
     var plugins = Lampa.Storage.get('plugins','[]')
     var updatedPlugins = plugins.filter(function(plug) 
     {
        if (plug.url.indexOf('showy.online') >= 0)
        {
-          updateplugins = true;
+          updatepluginss = true;
           return false;
        }
 		
        return true;
     });
 
-    if (updateplugins)
+    if (updatepluginss)
 	{
        Lampa.Storage.set('plugins', updatedPlugins);
 	   
