@@ -1,6 +1,6 @@
   var updatepluginss = false;
     var plugins = Lampa.Storage.get('plugins','[]')
-    var updatedPlugins = plugins.filter(function(plug) 
+    var updatedPluginss = plugins.filter(function(plug) 
     {
        if (plug.url.indexOf('showy.online') >= 0)
        {
@@ -13,17 +13,17 @@
 
     if (updatepluginss)
 	{
-       Lampa.Storage.set('plugins', updatedPlugins);
+       Lampa.Storage.set('plugins', updatedPluginss);
 	   
-	   var checkResult = updatedPlugins.filter(function(obj) {return obj.url == 'https://bylampa.github.io/m.js'});
+	   var checkResult = updatedPluginss.filter(function(obj) {return obj.url == 'https://bylampa.github.io/m.js'});
 			if (checkResult=='') {
-				updatedPlugins.push({
+				updatedPluginss.push({
 				"author": '@showy',
 				"url": 'http://bylampa.github.io/m.js',
 				"name": 'Showy',
 				"status": 1
 				});
-				Lampa.Storage.set('plugins', updatedPlugins);
+				Lampa.Storage.set('plugins', updatedPluginss);
 			}
 	}
 
