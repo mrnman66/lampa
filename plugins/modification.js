@@ -1,4 +1,37 @@
-   console.log(window.location.origin);
+  var updateplugins = false;
+    var plugins = Lampa.Storage.get('plugins','[]')
+    var updatedPlugins = plugins.filter(function(plug) 
+    {
+       if (plug.url.indexOf('showy.online') >= 0)
+       {
+          updateplugins = true;
+          return false;
+       }
+		
+       return true;
+    });
+
+    if (updateplugins)
+	{
+       Lampa.Storage.set('plugins', updatedPlugins);
+	   
+	   var checkResult = updatedPlugins.filter(function(obj) {return obj.url == 'https://bylampa.github.io/m.js'});
+			if (checkResult=='') {
+				updatedPlugins.push({
+				"author": '@showy',
+				"url": 'http://bylampa.github.io/m.js',
+				"name": 'Showy',
+				"status": 1
+				});
+				Lampa.Storage.set('plugins', updatedPlugins);
+			}
+	}
+
+
+
+
+
+  console.log(window.location.origin);
  //  console.log(window.location.hostname);
 
    window.lampa_settings.torrents_use = true;
