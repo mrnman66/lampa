@@ -71,7 +71,7 @@ Lampa.Listener.follow("full", function(a) {
         var urlType = e.name ? "tv" : "movie"; // Определяем тип
 
         // Формируем URL с использованием прокси для API
-        var o = Lampa.Utils.protocol() + 'api.themoviedb.org/3/' + urlType + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96&language=" + Lampa.Storage.get("language");
+        var o = 'http://cors.lampa.run.place/proxy/' + Lampa.Utils.addUrlComponent(Lampa.Utils.protocol() + 'api.themoviedb.org/3/' + urlType + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96&language=" + Lampa.Storage.get("language"));
 
         $.get(o, function(response) {
             if (response.logos && response.logos[0]) {
