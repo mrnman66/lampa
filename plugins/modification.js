@@ -69,35 +69,21 @@ Lampa.Listener.follow("full", function(a) {
     if (a.type === "complite") {
         var e = a.data.movie;
         var urlType = e.name ? "tv" : "movie"; // Определяем тип
+        var o = "http://cors.lampa.run.place/proxy/http://api.themoviedb.org/3/" + urlType + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96&language=" + Lampa.Storage.get("language");
 
-        // Параметры для формирования URL
-        var apiKey = "4ef0d7355d9ffb5151e987764708ce96"; // Ваш API ключ
-        var language = Lampa.Storage.get("language") || "ru"; // Получаем язык, если не установлен - по умолчанию "ru"
-        var apiUrl = "http://api.themoviedb.org/3/" + urlType + "/" + e.id + "/images"; // API URL
-        var proxyUrl = "http://cors.lampa.run.place/proxy/";
-
-        // Формирование полного URL с использованием прокси
-        var finalUrl = proxyUrl + encodeURIComponent(apiUrl + "?api_key=" + apiKey + "&language=" + language);
-        
-        console.log("Final URL:", finalUrl); // Логируем финальный URL
-        
-        // Запрос к API через прокси
-        $.get(finalUrl, function(response) {
+        $.get(o, function(response) {
             if (response.logos && response.logos[0]) {
                 var logoPath = response.logos[0].file_path;
                 if (logoPath !== "") {
                     $(".full-start-new__title").html(
-                        '<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w300" + logoPath.replace(".svg", ".png")) + '" />'
+                        '<img style="margin-top: 5px;max-height: 125px;" src="http://cors.lampa.run.place/proxy/http://image.tmdb.org/t/p/w300' + logoPath.replace(".svg", ".png") + '" />'
                     );
                 }
-            } else {
-                console.log("Логотипы не найдены в ответе:", response); // Логируем сообщение, если логотипы не найдены
             }
-        }).fail(function(jqXHR, textStatus, errorThrown) {
-            console.error("Запрос завершился ошибкой:", textStatus, errorThrown); // Лог ошибки в запросе
         });
     }
 });
+
 
 
 
