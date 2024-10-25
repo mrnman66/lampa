@@ -79,7 +79,7 @@
                     if (response.logos && response.logos[0]) {
                         var filePath = response.logos[0].file_path;
                         if (filePath !== "") {
-                            $(".full-start-new__title").html('<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w300" + filePath) + '" />');
+                            $(".full-start-new__title").html('<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w200" + filePath) + '" />');
                         }
                     }
                 });
