@@ -68,7 +68,7 @@
 // Вынесенные параметры
 var apiKey = "4ef0d7355d9ffb5151e987764708ce96";
 var apiProxyUrl = "http://212.113.103.137:9118/proxy/"; // Прокси для API
-var imgProxyUrl = ""; // Прокси для изображений
+var imgProxyUrl = "http://212.113.103.137:9118/proxyimg/"; // Прокси для изображений
 
 Lampa.Listener.follow("full", function(a) {
     if (a.type === "complite") {
@@ -82,7 +82,7 @@ Lampa.Listener.follow("full", function(a) {
                 var logoPath = response.logos[0].file_path;
                 if (logoPath !== "") {
                     $(".full-start-new__title").html(
-                        '<img style="margin-top: 5px; max-height: 125px;" src="' + imgProxyUrl + "http://image.tmdb.org/t/p/w300" + logoPath.replace(".svg", ".png") + '" />'
+                        '<img style="margin-top: 5px; max-height: 125px;" src="' + imgProxyUrl + "http://image.tmdb.org/t/p/w200" + logoPath.replace(".svg", ".png") + '" />'
                     );
                 }
             }
