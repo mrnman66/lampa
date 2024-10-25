@@ -46,7 +46,7 @@
 
 
 
- Lampa.Listener.follow("full", function(a) {
+ /*Lampa.Listener.follow("full", function(a) {
     if (a.type === "complite") {
         var e = a.data.movie;
         var urlType = e.name ? "tv" : "movie"; // Определяем тип
@@ -63,7 +63,30 @@
             }
         });
     }
-});
+});*/
+
+
+
+    if (!window.logoplugin) {
+        window.logoplugin = true;
+
+        Lampa.Listener.follow("full", function(a) {
+            if (a.type === "complite") {
+                var e = a.data.movie;
+                var o = Lampa.TMDB.api(e.name ? "tv" : "movie") + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language");
+
+                $.get(o, function(response) {
+                    if (response.logos && response.logos[0]) {
+                        var filePath = response.logos[0].file_path;
+                        if (filePath !== "") {
+                            $(".full-start-new__title").html('<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w300" + filePath) + '" />');
+                        }
+                    }
+                });
+            }
+        });
+    }
+
 
 
     
