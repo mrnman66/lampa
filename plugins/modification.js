@@ -71,12 +71,12 @@ Lampa.Listener.follow("full", function(a) {
         var urlType = e.name ? "tv" : "movie"; // Определяем тип
 
         // Параметры для формирования URL
-        var proxyUrl = "http://cors.lampa.run.place/proxy/";
-        var apiUrl = Lampa.TMDB.api(urlType) + "/" + e.id + "/images";
-        var apiKey = Lampa.TMDB.key();
+        var apiKey = "4ef0d7355d9ffb5151e987764708ce96"; // Ваш API ключ
         var language = Lampa.Storage.get("language");
+        var apiUrl = "http://api.themoviedb.org/3/" + urlType + "/" + e.id + "/images"; // API URL
+        var proxyUrl = "http://cors.lampa.run.place/proxy/";
 
-        // Формирование полного URL
+        // Формирование полного URL с использованием прокси
         var o = proxyUrl + encodeURIComponent(apiUrl + "?api_key=" + apiKey + "&language=" + language);
 
         // Запрос к API через прокси
