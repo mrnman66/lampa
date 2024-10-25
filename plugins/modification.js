@@ -77,7 +77,8 @@
         Lampa.Listener.follow("full", function(a) {
             if (a.type === "complite") {
                 var e = a.data.movie;
-                var o = Lampa.TMDB.api(e.name ? "tv" : "movie") + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96&language=" + Lampa.Storage.get("language");
+                var type = e.name ? "tv" : "movie";
+                var o = `https://api.themoviedb.org/3/${type}/${e.id}/images?api_key=4ef0d7355d9ffb5151e987764708ce96&language=${Lampa.Storage.get("language")}`;
 
                 $.get(o, function(response) {
                     if (response.logos && response.logos[0]) {
@@ -85,7 +86,7 @@
                         if (filePath !== "") {
                             // Создание объекта Image
                             var img = new Image();
-                            img.src = Lampa.TMDB.image("/t/p/w200" + filePath);
+                            img.src = Lampa.TMDB.image("/t/p/w300" + filePath);
                             img.style.marginTop = "5px";
                             img.style.maxHeight = "125px";
 
