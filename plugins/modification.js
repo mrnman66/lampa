@@ -46,12 +46,6 @@
 
 
 
-    
-!function() {
-    "use strict";
-    if (!window.logoplugin) {
-        window.logoplugin = true;
-
         Lampa.Listener.follow("full", function(a) {
             if ("complite" == a.type) {
                 var e = a.data.movie;
@@ -71,4 +65,4 @@
         });
     }
 
-}();
+
