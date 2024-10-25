@@ -67,6 +67,8 @@
 
 
 
+    
+
     if (!window.logoplugin) {
         window.logoplugin = true;
 
@@ -79,13 +81,23 @@
                     if (response.logos && response.logos[0]) {
                         var filePath = response.logos[0].file_path;
                         if (filePath !== "") {
-                            $(".full-start-new__title").html('<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w200" + filePath) + '" />');
+                            // Создание объекта Image
+                            var img = new Image();
+                            img.src = Lampa.TMDB.image("/t/p/w300" + filePath);
+                            img.style.marginTop = "5px";
+                            img.style.maxHeight = "125px";
+
+                            // После загрузки изображения добавляем его на страницу
+                            img.onload = function() {
+                                $(".full-start-new__title").html(img);
+                            };
                         }
                     }
                 });
             }
         });
     }
+
 
 
 
