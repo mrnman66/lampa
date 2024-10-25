@@ -46,7 +46,7 @@
 
 
 
-     /* Lampa.Listener.follow("full", function(a) {
+ Lampa.Listener.follow("full", function(a) {
     if (a.type === "complite") {
         var e = a.data.movie;
         var urlType = e.name ? "tv" : "movie"; // Определяем тип
@@ -63,42 +63,9 @@
             }
         });
     }
-});*/
-
-Lampa.Listener.follow("full", function(a) {
-    if (a.type === "complite") {
-        var e = a.data.movie;
-        var urlType = e.name ? "tv" : "movie"; // Определяем тип
-        var o = Lampa.TMDB.api(urlType) + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language");
-
-        // Выполняем GET-запрос к API
-        $.get(o, function(response) {
-            if (response.logos && response.logos[0]) {
-                var logoPath = response.logos[0].file_path;
-
-                if (logoPath !== "") {
-                    // Формируем URL с уникальным параметром
-                    var logoUrl = Lampa.TMDB.image("/t/p/w300" + logoPath.replace(".svg", ".png")) + "?t=" + new Date().getTime();
-
-                    // Заранее загружаем изображение
-                    var img = new Image();
-                    img.src = logoUrl;
-
-                    img.onload = function() {
-                        // Используем background-image для улучшения производительности
-                        $(".full-start-new__title").css({
-                            "background-image": "url('" + logoUrl + "')",
-                            "background-size": "contain",
-                            "background-repeat": "no-repeat",
-                            "height": "125px", // Задаем высоту контейнера
-                            "margin-top": "5px" // Отступ сверху
-                        });
-                    };
-                }
-            }
-        });
-    }
 });
+
+
     
 
 
