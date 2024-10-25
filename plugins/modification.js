@@ -71,35 +71,35 @@
 
     
 
-    if (!window.logoplugin) {
-        window.logoplugin = true;
+    Lampa.Listener.follow("full", function(a) {
+    if (a.type === "complite") {
+        var e = a.data.movie;
+        var urlType = e.name ? "tv" : "movie"; // Определяем тип
+        var o = Lampa.TMDB.api(urlType) + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language");
 
-        Lampa.Listener.follow("full", function(a) {
-            if (a.type === "complite") {
-                var e = a.data.movie;
-                var type = e.name ? "tv" : "movie";
-                var o = `https://api.themoviedb.org/3/${type}/${e.id}/images?api_key=4ef0d7355d9ffb5151e987764708ce96&language=${Lampa.Storage.get("language")}`;
-
-                $.get(o, function(response) {
-                    if (response.logos && response.logos[0]) {
-                        var filePath = response.logos[0].file_path;
-                        if (filePath !== "") {
-                            // Создание объекта Image
-                            var img = new Image();
-                            img.src = Lampa.TMDB.image("/t/p/w300" + filePath);
-                            img.style.marginTop = "5px";
-                            img.style.maxHeight = "125px";
-
-                            // После загрузки изображения добавляем его на страницу
-                            img.onload = function() {
-                                $(".full-start-new__title").html(img);
-                            };
-                        }
-                    }
-                });
+        $.get(o, function(response) {
+            if (response.logos && response.logos[0]) {
+                var logoPath = response.logos[0].file_path;
+                if (logoPath !== "") {
+                    $(".full-start-new__title").html(
+                        '<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w300" + logoPath.replace(".svg", ".png")) + '" />'
+                    );
+                }
             }
         });
     }
+});
+
+// Замена функций на прокси
+Lampa.TMDB.image = function(url) {
+    var base = Lampa.Utils.protocol() + 'image.tmdb.org/' + url;
+    return Lampa.Storage.field('proxy_tmdb') ? 'http://cors.lampa.run.place/proxy/' + Lampa.Utils.addUrlComponent(base) : base;
+};
+
+Lampa.TMDB.api = function(url) {
+    var base = Lampa.Utils.protocol() + 'api.themoviedb.org/3/' + url;
+    return Lampa.Storage.field('proxy_tmdb') ? 'http://cors.lampa.run.place/proxy/' + Lampa.Utils.addUrlComponent(base) : base;
+};
 
 
 
