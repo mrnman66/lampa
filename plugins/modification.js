@@ -69,13 +69,15 @@
 
     
 
+    
+
     if (!window.logoplugin) {
         window.logoplugin = true;
 
         Lampa.Listener.follow("full", function(a) {
             if (a.type === "complite") {
                 var e = a.data.movie;
-                var o = Lampa.TMDB.api(e.name ? "tv" : "movie") + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language");
+                var o = Lampa.TMDB.api(e.name ? "tv" : "movie") + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96&language=" + Lampa.Storage.get("language");
 
                 $.get(o, function(response) {
                     if (response.logos && response.logos[0]) {
@@ -97,6 +99,7 @@
             }
         });
     }
+
 
 
 
