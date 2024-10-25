@@ -47,7 +47,8 @@
 
 
     
-
+!function() {
+    "use strict";
     if (!window.logoplugin) {
         window.logoplugin = true;
 
@@ -70,3 +71,4 @@
         });
     }
 
+}();
