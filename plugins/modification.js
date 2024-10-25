@@ -65,24 +65,20 @@
     }
 });*/
 
-
-
-    
-
-    
-
-    Lampa.Listener.follow("full", function(a) {
+Lampa.Listener.follow("full", function(a) {
     if (a.type === "complite") {
         var e = a.data.movie;
         var urlType = e.name ? "tv" : "movie"; // Определяем тип
-        var o = Lampa.TMDB.api(urlType) + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language");
+
+        // Добавляем API ключ непосредственно в URL
+        var o = Lampa.TMDB.api(urlType) + "/" + e.id + "/images?api_key=4ef0d7355d9ffb5151e987764708ce96&language=" + Lampa.Storage.get("language");
 
         $.get(o, function(response) {
             if (response.logos && response.logos[0]) {
                 var logoPath = response.logos[0].file_path;
                 if (logoPath !== "") {
                     $(".full-start-new__title").html(
-                        '<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w300" + logoPath.replace(".svg", ".png")) + '" />'
+                        '<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w200" + logoPath.replace(".svg", ".png")) + '" />'
                     );
                 }
             }
