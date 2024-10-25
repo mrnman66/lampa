@@ -46,23 +46,24 @@
 
 
 
-        Lampa.Listener.follow("full", function(a) {
-            if ("complite" == a.type) {
-                var e = a.data.movie;
-                var o = Lampa.TMDB.api(e.name ? "tv" : "movie") + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language");
+      Lampa.Listener.follow("full", function(a) {
+    if (a.type === "complite") {
+        var e = a.data.movie;
+        var urlType = e.name ? "tv" : "movie"; // Определяем тип
+        var o = Lampa.TMDB.api(urlType) + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language");
 
-                $.get(o, function(a) {
-                    if (a.logos && a.logos[0]) {
-                        var e = a.logos[0].file_path;
-                        if ("" != e) {
-                            $(".full-start-new__title").html(
-                                '<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w300" + e.replace(".svg", ".png")) + '" />'
-                            );
-                        }
-                    }
-                });
+        $.get(o, function(response) {
+            if (response.logos && response.logos[0]) {
+                var logoPath = response.logos[0].file_path;
+                if (logoPath !== "") {
+                    $(".full-start-new__title").html(
+                        '<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w300" + logoPath.replace(".svg", ".png")) + '" />'
+                    );
+                }
             }
         });
+    }
+});
     
 
 
