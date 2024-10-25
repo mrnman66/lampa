@@ -83,7 +83,7 @@
                         if (filePath !== "") {
                             // Создание объекта Image
                             var img = new Image();
-                            img.src = Lampa.TMDB.image("/t/p/w300" + filePath);
+                            img.src = Lampa.TMDB.image("/t/p/w200" + filePath);
                             img.style.marginTop = "5px";
                             img.style.maxHeight = "125px";
 
