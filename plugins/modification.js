@@ -84,11 +84,15 @@ Lampa.Listener.follow("full", function(a) {
                     var img = new Image();
                     img.src = logoUrl;
 
-                    // После завершения загрузки обновляем содержимое
                     img.onload = function() {
-                        $(".full-start-new__title").html(
-                            '<img style="margin-top: 5px; max-height: 125px;" src="' + logoUrl + '" />'
-                        );
+                        // Используем background-image для улучшения производительности
+                        $(".full-start-new__title").css({
+                            "background-image": "url('" + logoUrl + "')",
+                            "background-size": "contain",
+                            "background-repeat": "no-repeat",
+                            "height": "125px", // Задаем высоту контейнера
+                            "margin-top": "5px" // Отступ сверху
+                        });
                     };
                 }
             }
