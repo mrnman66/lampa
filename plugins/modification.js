@@ -44,58 +44,7 @@
       }
      });
 
-
-
- /*Lampa.Listener.follow("full", function(a) {
-    if (a.type === "complite") {
-        var e = a.data.movie;
-        var urlType = e.name ? "tv" : "movie"; // Определяем тип
-        var o = Lampa.TMDB.api(urlType) + "/" + e.id + "/images?api_key=" + Lampa.TMDB.key() + "&language=" + Lampa.Storage.get("language");
-
-        $.get(o, function(response) {
-            if (response.logos && response.logos[0]) {
-                var logoPath = response.logos[0].file_path;
-                if (logoPath !== "") {
-                    $(".full-start-new__title").html(
-                        '<img style="margin-top: 5px;max-height: 125px;" src="' + Lampa.TMDB.image("/t/p/w300" + logoPath.replace(".svg", ".png")) + '" />'
-                    );
-                }
-            }
-        });
-    }
-});*/
-
-// Вынесенные параметры
-var apiKey = "4ef0d7355d9ffb5151e987764708ce96";
-var apiProxyUrl = "http://212.113.103.137:9118/proxy/"; // Прокси для API
-var imgProxyUrl = "http://212.113.103.137:9118/proxyimg/"; // Прокси для изображений
-
-Lampa.Listener.follow("full", function(a) {
-    if (a.type === "complite") {
-        var e = a.data.movie;
-        var urlType = e.name ? "tv" : "movie"; // Определяем тип
-
-        var o = apiProxyUrl + "http://api.themoviedb.org/3/" + urlType + "/" + e.id + "/images?api_key=" + apiKey + "&language=" + Lampa.Storage.get("language");
-
-        $.get(o, function(response) {
-            if (response.logos && response.logos[0]) {
-                var logoPath = response.logos[0].file_path;
-                if (logoPath !== "") {
-                    $(".full-start-new__title").html(
-                        '<img style="margin-top: 5px; max-height: 125px;" src="' + imgProxyUrl + "http://image.tmdb.org/t/p/w500" + logoPath.replace(".svg", ".png") + '" />'
-                    );
-                }
-            }
-        });
-    }
-});
-
-
-/*!function() {
-    "use strict";
-    
-    // Добавляем параметр в настройки
-    Lampa.SettingsApi.addParam({
+     Lampa.SettingsApi.addParam({
         component: 'interface',
         param: {
             name: 'logo_title',
@@ -111,18 +60,19 @@ Lampa.Listener.follow("full", function(a) {
          }, 0);
 	}
     });
-    
+
     // Проверяем, был ли уже добавлен плагин
     window.logoplugin || (window.logoplugin = !0,
-        // Вынесенные параметры
-      var apiKey = "4ef0d7355d9ffb5151e987764708ce96";
-      var apiProxyUrl = "http://212.113.103.137:9118/proxy/"; // Прокси для API
-      var imgProxyUrl = "http://212.113.103.137:9118/proxyimg/"; // Прокси для изображений
 
       Lampa.Listener.follow("full", function(a) {
            if (a.type == "complite" && Lampa.Storage.get('logo_title') !== false) {
               var e = a.data.movie;
               var urlType = e.name ? "tv" : "movie"; // Определяем тип
+
+               // Вынесенные параметры
+              var apiKey = "4ef0d7355d9ffb5151e987764708ce96";
+              var apiProxyUrl = "http://212.113.103.137:9118/proxy/"; // Прокси для API
+              var imgProxyUrl = "http://212.113.103.137:9118/proxyimg/"; // Прокси для изображений
 
               var o = apiProxyUrl + "http://api.themoviedb.org/3/" + urlType + "/" + e.id + "/images?api_key=" + apiKey + "&language=" + Lampa.Storage.get("language");
 
@@ -131,15 +81,18 @@ Lampa.Listener.follow("full", function(a) {
                       var logoPath = response.logos[0].file_path;
                       if (logoPath !== "") {
                           $(".full-start-new__title").html(
-                              '<img style="margin-top: 5px; max-height: 125px;" src="' + imgProxyUrl + "http://image.tmdb.org/t/p/w200" + logoPath.replace(".svg", ".png") + '" />'
+                              '<img style="margin-top: 5px; max-height: 125px;" src="' + imgProxyUrl + "http://image.tmdb.org/t/p/w500" + logoPath.replace(".svg", ".png") + '" />'
                           );
                       }
                   }
               });
           }
-      });
+      })
     );
-}();*/
+
+
+
+
 
 
 
