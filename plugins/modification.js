@@ -82,7 +82,7 @@ Lampa.Listener.follow("full", function(a) {
                 var logoPath = response.logos[0].file_path;
                 if (logoPath !== "") {
                     $(".full-start-new__title").html(
-                        '<img style="margin-top: 5px; max-height: 125px;" src="' + imgProxyUrl + "http://image.tmdb.org/t/p/w200" + logoPath.replace(".svg", ".png") + '" />'
+                        '<img style="margin-top: 5px; max-height: 125px;" src="' + imgProxyUrl + "http://image.tmdb.org/t/p/w500" + logoPath.replace(".svg", ".png") + '" />'
                     );
                 }
             }
