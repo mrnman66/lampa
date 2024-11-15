@@ -1,5 +1,5 @@
-   console.log(window.location.origin);
- //  console.log(window.location.hostname);
+ //  console.log(window.location.origin);
+   console.log(window.location.hostname);
 
    window.lampa_settings.torrents_use = true;
    window.lampa_settings.demo = false;
