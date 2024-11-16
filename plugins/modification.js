@@ -1,7 +1,7 @@
  //  console.log(window.location.origin);
  //  console.log(window.location.hostname);
      console.log(window.location.href);
-
+/*
    // Получаем текущий URL
 var currentUrl = window.location.href;
 
@@ -12,7 +12,7 @@ if (currentUrl.indexOf("bylampa") !== -1) {
     
 } else {
     console.log("Слово 'bylampa' не найдено в URL.");
-}
+}*/
 
    window.lampa_settings.torrents_use = true;
    window.lampa_settings.demo = false;
