@@ -2,6 +2,18 @@
  //  console.log(window.location.hostname);
      console.log(window.location.href);
 
+   // Получаем текущий URL
+var currentUrl = window.location.href;
+
+// Проверяем, содержит ли URL слово "bylampa"
+if (currentUrl.indexOf("bylampa") !== -1) {
+    // Если "bylampa" есть в URL, выполняем нужные действия
+    console.log("Слово 'bylampa' найдено в URL!");
+    
+} else {
+    console.log("Слово 'bylampa' не найдено в URL.");
+}
+
    window.lampa_settings.torrents_use = true;
    window.lampa_settings.demo = false;
    window.lampa_settings.read_only = false;
