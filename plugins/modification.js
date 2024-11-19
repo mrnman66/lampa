@@ -2,13 +2,10 @@
 //   console.log(window.location.hostname);
      console.log(window.location.href);
     
-      var titleTag = document.getElementsByTagName("title")[0];
-      if (titleTag) {
-        var titleText = titleTag.textContent || titleTag.innerText;
-        if (titleText.indexOf("Uncensored") !== -1) {
-            console.log("Uncensored"); // Если заголовок содержит "Uncensored"
-        }
-    }
+      Lampa.Manifest.origin = 'by'
+      if (Lampa.Manifest.origin == 'by') {
+          console.log("Наш сервер");
+      }
 
 /*
    // Получаем текущий URL
