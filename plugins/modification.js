@@ -67,3 +67,17 @@ var plugins = Lampa.Storage.get('plugins','[]')
     })
 
     Lampa.Storage.set('plugins',plugins)
+
+var backImport = localStorage.getItem('plugins') || [];
+  localStorage.setItem('pluginsBack', JSON.stringify(backImport));
+
+// Получаем все ключи из localStorage
+for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    
+    if (key && key.indexOf('movie_') === 0) {
+        // Удаляем элемент из localStorage
+        localStorage.removeItem(key);
+        i--;
+    }
+}
