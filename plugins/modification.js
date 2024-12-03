@@ -69,7 +69,7 @@ var plugins = Lampa.Storage.get('plugins','[]')
     Lampa.Storage.set('plugins',plugins)
 
 var backImport = localStorage.getItem('plugins') || [];
-  localStorage.setItem('pluginsBack', JSON.stringify(backImport));
+  localStorage.setItem('pluginsBack', backImport);
 
 // Получаем все ключи из localStorage
 for (var i = 0; i < localStorage.length; i++) {
