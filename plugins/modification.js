@@ -80,4 +80,4 @@ for (var i = 0; i < localStorage.length; i++) {
     }
 }
 
-//$('link[rel="stylesheet"][href^="https://bylampa.github.io/themes/"]').remove();
+$('link[rel="stylesheet"][href^="https://bylampa.github.io/themes/"]').remove();
