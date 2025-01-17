@@ -1,4 +1,6 @@
-  var url = 'http://tmdb.cub.red/movie/now?page=1';
+function check (){
+
+var url = 'http://tmdb.cub.red/movie/now?page=1';
 	var xhr = new XMLHttpRequest();
 	xhr.open('GET', url, true);
 	xhr.timeout = 2000;
@@ -13,6 +15,8 @@
 		console.log('Ошибка');
 		
 	};
+}
+check();
 
 
    window.lampa_settings.torrents_use = true;
