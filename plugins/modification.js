@@ -6,7 +6,7 @@ var url = 'http://tmdb.cub.red/movie/now?page=1';
 	xhr.timeout = 2000;
 	xhr.send();
 	xhr.onload = function() {
-		
+		Lampa.Noty.show('Ок');
 	}
 	xhr.ontimeout = function() {
 		Lampa.Noty.show('Тайм-аут');
