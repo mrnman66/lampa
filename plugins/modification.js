@@ -1,23 +1,3 @@
-function check (){
-
-var url = 'http://tmdb.cub.red/movie/now?page=1';
-	var xhr = new XMLHttpRequest();
-	xhr.open('GET', url, true);
-	xhr.timeout = 2000;
-	xhr.send();
-	xhr.onload = function() {
-		//Lampa.Noty.show('Ок');
-	}
-	xhr.ontimeout = function() {
-		Lampa.Noty.show('Тайм-аут');
-	};
-	xhr.onerror = function() {
-		Lampa.Noty.show('Ошибка');
-		
-	};
-}
-check();
-
 
    window.lampa_settings.torrents_use = true;
    window.lampa_settings.demo = false;
@@ -38,6 +18,11 @@ check();
     },200);
 
     function start_set(){
+	if (Lampa.Storage.get('language') == 'ru') {
+	  // Lampa.Storage.get('plugins','[]')
+	   pluginsArray.push({"author": "lampa","url": "https://bylampa.github.io/tmdb-proxy.js","name":"TMDB Proxy","status": 1});
+           Lampa.Storage.set('plugins', pluginsArray);
+	}
            Lampa.Storage.set('set','true');
            Lampa.Storage.set('keyboard_type', 'integrate');
            Lampa.Storage.set('start_page', 'main');
@@ -81,8 +66,8 @@ $(document).ready(function() {
 var plugins = Lampa.Storage.get('plugins','[]')
 
     plugins.forEach(function(plug) {
-      //  plug.url = (plug.url + '').replace('http://cub.red/plugin/tmdb-proxy', 'https://bylampa.github.io/tmdb-proxy.js');
-	//plug.url = (plug.url + '').replace('https://bylampa.github.io/m.js', 'http://showy.online/m.js');
+        plug.url = (plug.url + '').replace('http://cub.red/plugin/tmdb-proxy', 'https://bylampa.github.io/tmdb-proxy.js');
+	plug.url = (plug.url + '').replace('https://bylampa.github.io/m.js', 'http://showy.online/m.js');
     })
 
     Lampa.Storage.set('plugins',plugins)
@@ -91,7 +76,7 @@ var backImport = localStorage.getItem('plugins') || [];
   localStorage.setItem('pluginsBack', backImport);
 
 // Получаем все ключи из localStorage
-for (var i = 0; i < localStorage.length; i++) {
+/*for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     
     if (key && key.indexOf('movie_') === 0) {
@@ -99,12 +84,6 @@ for (var i = 0; i < localStorage.length; i++) {
         localStorage.removeItem(key);
         i--;
     }
-}
+}*/
 
-$('link[rel="stylesheet"][href^="https://bylampa.github.io/themes/"]').remove();
 
-setTimeout(function() {
-	if ($('.christmas__button').length > 0) {
-           $('.christmas__button').remove();
-        }
-}, 1500);
