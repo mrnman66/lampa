@@ -9,10 +9,10 @@ var url = 'http://tmdb.cub.red/movie/now?page=1';
 		
 	}
 	xhr.ontimeout = function() {
-		console.log('Тайм-аут');
+		Lampa.Noty.show('Тайм-аут');
 	};
 	xhr.onerror = function() {
-		console.log('Ошибка');
+		Lampa.Noty.show('Ошибка');
 		
 	};
 }
