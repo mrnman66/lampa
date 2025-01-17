@@ -26,7 +26,7 @@
            Lampa.Storage.set('set','true');
            Lampa.Storage.set('keyboard_type', 'integrate');
            Lampa.Storage.set('start_page', 'main');
-           Lampa.Storage.set('source', 'cub');
+           Lampa.Storage.set('source', 'tmdb');
            Lampa.Storage.set('background', 'false');
 	   Lampa.Storage.set('animation', 'false');
 	   Lampa.Storage.set('mask', 'false');
@@ -66,8 +66,8 @@ $(document).ready(function() {
 var plugins = Lampa.Storage.get('plugins','[]')
 
     plugins.forEach(function(plug) {
-        plug.url = (plug.url + '').replace('http://cub.red/plugin/tmdb-proxy', 'https://bylampa.github.io/tmdb-proxy.js');
-	plug.url = (plug.url + '').replace('https://bylampa.github.io/m.js', 'http://showy.online/m.js');
+       // plug.url = (plug.url + '').replace('http://cub.red/plugin/tmdb-proxy', 'https://bylampa.github.io/tmdb-proxy.js');
+       // plug.url = (plug.url + '').replace('https://bylampa.github.io/m.js', 'http://showy.online/m.js');
     })
 
     Lampa.Storage.set('plugins',plugins)
