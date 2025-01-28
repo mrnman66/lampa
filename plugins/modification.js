@@ -54,7 +54,7 @@ $(document).ready(function() {
                 $(this).html('BYLAMPA');
             }
         });
-    }, 50); 
+    }, 100); 
  
     $('.navigation-tabs__button').on('focus', function() {
         if ($(this).text().trim() === 'Lampa') {
