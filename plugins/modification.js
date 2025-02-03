@@ -1,3 +1,4 @@
+   Lampa.Storage.set('cub_domain', 'standby.cub.red');
 
    window.lampa_settings.torrents_use = true;
    window.lampa_settings.demo = false;
