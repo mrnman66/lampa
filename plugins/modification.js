@@ -1,4 +1,4 @@
-   Lampa.Storage.set('cub_domain', 'standby.cub.red');
+//   Lampa.Storage.set('cub_domain', 'standby.cub.red');
 
    window.lampa_settings.torrents_use = true;
    window.lampa_settings.demo = false;
@@ -36,7 +36,7 @@
 	   Lampa.Storage.set('screensaver', 'false');
            Lampa.Storage.set('pages_save_total', '3');
 	   Lampa.Storage.set('device_name', 'Lampa Uncensored');
-	   Lampa.Storage.set('cub_domain', 'standby.cub.red');
+	//   Lampa.Storage.set('cub_domain', 'standby.cub.red');
 	   location.reload()
      } 
 
